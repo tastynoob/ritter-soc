@@ -1,7 +1,7 @@
 
 vlib work
 
-
+/*注意需要导入硬件仿真库*/
 
 vlog H:/AllProject/Tang/work-ritter_soc0.4/simulation/tb.v
 vlog H:/AllProject/Tang/work-ritter_soc0.4/simulation/tb1.v

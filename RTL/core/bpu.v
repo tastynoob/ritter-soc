@@ -8,7 +8,7 @@
 `include "config.v"
 
 
-// `define use_ap
+// 
 
 
 module BPU (
@@ -61,7 +61,7 @@ wire inst_vld;
 wire[`xlen_def] inst_pc;
 wire[`ilen_def] inst;
 
-`ifdef use_ap
+`ifdef USE_AP
 //对齐处理
 BPU_AP u_BPU_AP(
     .i_clk      ( i_clk      ),

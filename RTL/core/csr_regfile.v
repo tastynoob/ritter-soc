@@ -154,6 +154,8 @@ module CSR_REGFILE (
     end
 
 
+`ifdef HAS_FPU
+
     FPU32 u_FPU1(
         .i_clk    ( i_clk    ),
         .i_rsn    ( i_rsn    ),
@@ -164,6 +166,9 @@ module CSR_REGFILE (
         .o_mulres ( fres0_mul ),
         .o_divres (   )//浮点除法资源消耗太大 
     );
+
+`endif
+
 
 
     assign o_csr_rdata = (~i_csr_ren) ? 0 :

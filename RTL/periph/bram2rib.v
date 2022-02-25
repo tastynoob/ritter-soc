@@ -1,6 +1,8 @@
 
 
-//`define SIMULATION 
+`include "../core/config.v"
+
+
 
 
 module DTCM_CTRL (

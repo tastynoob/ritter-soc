@@ -1,0 +1,39 @@
+{
+    "version": 1,
+    "beforeBuildTasks": [],
+    "afterBuildTasks": [
+        {
+            "name": "bintomem",
+            "disable": false,
+            "abortAfterFailed": false,
+            "command": "python BinToMem.py"
+        },
+        {
+            "name": "toasm",
+            "disable": false,
+            "abortAfterFailed": false,
+            "command": "\"E:\\Program Files (x86)\\xpack-riscv-none-embed-gcc-8.3.0-2.3\\bin\\riscv-none-embed-objdump.exe\" -S -D .\\build\\Debug\\tinymcu.elf > 1.edasm"
+        }
+    ],
+    "global": {
+        "output-debug-info": "enable",
+        "arch": "rv32im",
+        "abi": "ilp32",
+        "code-model": "medlow"
+    },
+    "c/cpp-compiler": {
+        "language-c": "gnu11",
+        "language-cpp": "c++11",
+        "optimization": "level-0",
+        "warnings": "all-warnings",
+        "C_FLAGS": "-Wl,-Bstatic -ffunction-sections -fdata-sections",
+        "CXX_FLAGS": "-ffunction-sections -fdata-sections"
+    },
+    "asm-compiler": {
+        "ASM_FLAGS": "-Wl,-Bstatic"
+    },
+    "linker": {
+        "output-format": "elf",
+        "LD_FLAGS": "-Wl,--cref -Wl,--no-relax -Wl,--gc-sections --specs=nosys.specs --specs=nano.specs -nostartfiles -u _printf_float"
+    }
+}
