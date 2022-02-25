@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SoftEcc>
+    <Config>
+        <Baud_Rate>115200</Baud_Rate>
+        <Custom_Baud_Rate></Custom_Baud_Rate>
+        <Data_Bits>8</Data_Bits>
+        <Incoming_Clk_Rate>84000000</Incoming_Clk_Rate>
+        <Parity>None</Parity>
+        <Stop_Bits>1</Stop_Bits>
+    </Config>
+    <GeneralConfig>
+        <Device>EG4S20BG256</Device>
+        <Type>EG_LOGIC_UART</Type>
+        <create_VHDL>false</create_VHDL>
+        <inst>USART</inst>
+    </GeneralConfig>
+</SoftEcc>

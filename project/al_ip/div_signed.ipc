@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DIVIDERConfig>
+    <GeneralConfig>
+        <Type>EG_LOGIC_SEQ_DIV</Type>
+        <Device>EG4S20BG256</Device>
+        <create_VHDL>false</create_VHDL>
+        <inst>DIV_SIGNED</inst>
+        <numer_width>32</numer_width>
+        <denom_width>32</denom_width>
+        <model_select>single</model_select>
+        <deno_str>SIGNED</deno_str>
+        <nu_str>SIGNED</nu_str>
+        <level_nu>34</level_nu>
+    </GeneralConfig>
+</DIVIDERConfig>

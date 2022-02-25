@@ -1,0 +1,7 @@
+set_pin_assignment	{ i_clk }	{ LOCATION = K14; }
+set_pin_assignment	{ i_io_rx }	{ LOCATION = L12; }
+set_pin_assignment	{ i_rstn }	{ LOCATION = K16; }
+set_pin_assignment	{ o_io_tx }	{ LOCATION = J11; }
+
+
+

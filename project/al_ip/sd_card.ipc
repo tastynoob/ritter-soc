@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SD_CARD>
+    <GeneralConfig>
+        <Device>EG4S20BG256</Device>
+        <Type>EG_LOGIC_SD_Card</Type>
+        <create_VHDL>false</create_VHDL>
+        <inst>SD_CARD</inst>
+    </GeneralConfig>
+</SD_CARD>
