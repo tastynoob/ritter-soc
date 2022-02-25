@@ -274,7 +274,7 @@
                     <Attr Name="CompileOrder" Val="33"/>
                 </FileInfo>
             </File>
-            <File Path="../RTL/aothers/bpu2idu.v">
+            <File Path="../RTL/periph/periph_top.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -282,7 +282,7 @@
                     <Attr Name="CompileOrder" Val="34"/>
                 </FileInfo>
             </File>
-            <File Path="../RTL/aothers/bpu_minidec.v">
+            <File Path="../RTL/periph/usart2rib.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -290,7 +290,7 @@
                     <Attr Name="CompileOrder" Val="35"/>
                 </FileInfo>
             </File>
-            <File Path="../RTL/aothers/config.v">
+            <File Path="../RTL/soc_top/core_top.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -298,7 +298,7 @@
                     <Attr Name="CompileOrder" Val="36"/>
                 </FileInfo>
             </File>
-            <File Path="../RTL/aothers/defines.v">
+            <File Path="al_ip/sd_card.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -306,7 +306,7 @@
                     <Attr Name="CompileOrder" Val="37"/>
                 </FileInfo>
             </File>
-            <File Path="../RTL/aothers/idu.v">
+            <File Path="al_ip/spi_flash.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -314,7 +314,7 @@
                     <Attr Name="CompileOrder" Val="38"/>
                 </FileInfo>
             </File>
-            <File Path="../RTL/aothers/idu_oitf.v">
+            <File Path="al_ip/usart_gate.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -322,7 +322,7 @@
                     <Attr Name="CompileOrder" Val="39"/>
                 </FileInfo>
             </File>
-            <File Path="../RTL/aothers/rib_master_sel.v">
+            <File Path="../RTL/core/reset.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -330,7 +330,7 @@
                     <Attr Name="CompileOrder" Val="40"/>
                 </FileInfo>
             </File>
-            <File Path="../RTL/aothers/rib_slave_sel.v">
+            <File Path="../RTL/periph/timer2rib.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -338,7 +338,7 @@
                     <Attr Name="CompileOrder" Val="41"/>
                 </FileInfo>
             </File>
-            <File Path="../RTL/periph/periph_top.v">
+            <File Path="al_ip/pll.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -346,7 +346,7 @@
                     <Attr Name="CompileOrder" Val="42"/>
                 </FileInfo>
             </File>
-            <File Path="../RTL/periph/usart2rib.v">
+            <File Path="../RTL/core/fpu.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -354,7 +354,7 @@
                     <Attr Name="CompileOrder" Val="43"/>
                 </FileInfo>
             </File>
-            <File Path="../RTL/soc_top/core_top.v">
+            <File Path="../RTL/core/fpu_utils.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -362,7 +362,7 @@
                     <Attr Name="CompileOrder" Val="44"/>
                 </FileInfo>
             </File>
-            <File Path="al_ip/sd_card.v">
+            <File Path="../simulation/tb1.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
@@ -370,76 +370,12 @@
                     <Attr Name="CompileOrder" Val="45"/>
                 </FileInfo>
             </File>
-            <File Path="al_ip/spi_flash.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="46"/>
-                </FileInfo>
-            </File>
-            <File Path="al_ip/usart_gate.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="47"/>
-                </FileInfo>
-            </File>
-            <File Path="../RTL/core/reset.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="48"/>
-                </FileInfo>
-            </File>
-            <File Path="../RTL/periph/timer2rib.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="49"/>
-                </FileInfo>
-            </File>
-            <File Path="al_ip/pll.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="50"/>
-                </FileInfo>
-            </File>
-            <File Path="../RTL/core/fpu.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="51"/>
-                </FileInfo>
-            </File>
-            <File Path="../RTL/core/fpu_utils.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="52"/>
-                </FileInfo>
-            </File>
-            <File Path="../simulation/tb1.v">
-                <FileInfo>
-                    <Attr Name="UsedInSyn" Val="true"/>
-                    <Attr Name="UsedInP&R" Val="true"/>
-                    <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="53"/>
-                </FileInfo>
-            </File>
             <File Path="../RTL/periph/bram2rib.v">
                 <FileInfo>
                     <Attr Name="UsedInSyn" Val="true"/>
                     <Attr Name="UsedInP&R" Val="true"/>
                     <Attr Name="BelongTo" Val="design_1"/>
-                    <Attr Name="CompileOrder" Val="54"/>
+                    <Attr Name="CompileOrder" Val="46"/>
                 </FileInfo>
             </File>
         </Verilog>
@@ -501,7 +437,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2022-02-25 17:47:12.788</Step_Last_Change>
+        <Step_Last_Change>2022-02-25 18:37:29.736</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
