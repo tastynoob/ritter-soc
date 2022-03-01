@@ -44,7 +44,8 @@ module EXU_ALU (
 
     wire[`xlen_def] alu_srl = {`xlen{i_aluinfo[`aluinfo_srl]}} & (i_alu_op1 >> i_alu_op2);
 
-    wire[`xlen_def] alu_sra = {`xlen{i_aluinfo[`aluinfo_sra]}} & (( { {31{i_alu_op1[31]}}, 1'b0 } << (~i_alu_op2) ) | ( i_alu_op1 >> i_alu_op2));
+
+    wire[`xlen_def] alu_sra = {`xlen{i_aluinfo[`aluinfo_sra]}} & (({32{i_alu_op1[31]}} << (6'd32 - {1'b0, i_alu_op2[4:0]})) | (i_alu_op1 >> i_alu_op2[4:0]));
 
     wire[`xlen_def] alu_xor = {`xlen{i_aluinfo[`aluinfo_xor]}} & (i_alu_op1 ^ i_alu_op2);
 

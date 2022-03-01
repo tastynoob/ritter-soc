@@ -2,13 +2,14 @@
 //当处于仿真模式时,开启下面的宏定义以取代bram的实现
 //`define SIMULATION 
 
-
 //是否使用FPU
-`define HAS_FPU
+//`define HAS_FPU
 
 //取指是否使用对齐处理器(可处理2字节对齐,不支持一字节对齐)
 //但只支持32位指令的对齐
 //`define USE_AP
+
+//`define USE_SDRAM
 
 
 

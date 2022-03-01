@@ -3,7 +3,7 @@
 ## 介绍
 
 ### ritter-soc信息
-ritter-soc是我花了半年时间自研出来的基于riscv指令集的处理器     
+ritter-soc是我大二时期花了半年时间自研出来的基于riscv指令集的处理器     
 里面包括ritter-core以及总线和外设       
 所有设计均采用verilog设计       
 该项目使用sipeed公司的tang premier FPGA开发板上开发     

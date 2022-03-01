@@ -173,7 +173,7 @@ module ITCM_SIM (
     reg[31:0] sram[64*256-1:0]; //39k
     integer i;
     initial begin
-        $readmemh("H:\\AllProject\\EIDE\\ritter mcu\\mem.list", sram);
+        $readmemh("H:\\AllProject\\Tang\\work-ritter_soc1.0\\isa\\mem.list", sram);
     end
 
     reg handshake_rdy;

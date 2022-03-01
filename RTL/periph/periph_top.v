@@ -120,10 +120,10 @@ SLAVE_SEL#(
     .o_ribd_wrcs  (   ),
     .o_ribd_mask  (   ),
     .o_ribd_wdata (  ),
-    .i_ribd_rdata ( 0 ),
+    .i_ribd_rdata ( 32'b0 ),
     .o_ribd_req   (    ),
-    .i_ribd_gnt   ( 0   ),
-    .i_ribd_rsp   ( 0   ),
+    .i_ribd_gnt   ( 1'b0   ),
+    .i_ribd_rsp   ( 1'b0   ),
     .o_ribd_rdy   (    )
 );
 

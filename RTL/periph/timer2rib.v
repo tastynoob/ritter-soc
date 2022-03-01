@@ -48,6 +48,10 @@ always @(posedge i_clk or negedge i_rstn) begin
                 //只读最后一位
                 o_ribs_rdata <= {31'b0,timer_ctrl[0]};
             end
+
+            if(timer_ctrl[0])begin//计数
+                timer_cnt <= timer_cnt + 1;
+            end
         end
         16'h004:begin//定时器的低32位
             if(i_ribs_wrcs)begin
@@ -55,6 +59,9 @@ always @(posedge i_clk or negedge i_rstn) begin
             end
             else begin
                 o_ribs_rdata <= timer_cnt[31:0];
+                if(timer_ctrl[0])begin//计数
+                    timer_cnt <= timer_cnt + 1;
+                end
             end
         end
         16'h008:begin//定时器的高32位
@@ -63,13 +70,16 @@ always @(posedge i_clk or negedge i_rstn) begin
             end
             else begin
                 o_ribs_rdata <= timer_cnt[63:32];
+                if(timer_ctrl[0])begin//计数
+                    timer_cnt <= timer_cnt + 1;
+                end
             end
         end
         endcase
     end
     else begin
         o_ribs_rsp <= 1'b0;
-        if(timer_ctrl[0])begin
+        if(timer_ctrl[0])begin//计数
             timer_cnt <= timer_cnt + 1;
         end
     end
@@ -79,25 +89,6 @@ assign o_ribs_gnt = i_ribs_req;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 endmodule
+
+

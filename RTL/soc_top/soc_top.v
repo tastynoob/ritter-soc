@@ -14,17 +14,21 @@ module SOC_TOP (
 
 wire extlock;//lock信号为高代表输出时钟稳定
 wire clk_84mhz;
+
+
+`ifndef SIMULATION
 pll u_pll(
     .refclk  ( i_clk  ),//i
     .reset   ( ~i_rstn    ),//i
     .extlock ( extlock ),//o
     .clk0_out( clk_84mhz )//o_clk 84mhz
 ); 
+`else
 
+assign extlock = 1;
+assign clk_84mhz = i_clk;
 
-
-
-
+`endif
 
 
 
@@ -34,6 +38,20 @@ internal_reset u_internal_reset(
     .i_rstn ( i_rstn & extlock ),
     .o_reset  ( reset  )
 );
+
+
+
+wire[31:0] sdram_addr;
+wire sdram_wrcs;
+wire[3:0] sdram_mask;
+wire[31:0] sdram_wdata;
+wire[31:0] sdram_rdata;
+wire sdram_req;
+wire sdram_gnt;
+wire sdram_rsp;
+wire sdram_rdy;
+
+
 
 
 
@@ -52,15 +70,15 @@ CORE_TOP u_CORE_TOP(
     .i_clk        ( clk_84mhz        ),
     .i_rstn       ( reset       ),
 
-    .o_ribx_addr  (   ),
-    .o_ribx_wrcs  (   ),
-    .o_ribx_mask  (   ),
-    .o_ribx_wdata (  ),
-    .i_ribx_rdata ( 0 ),
-    .o_ribx_req   (    ),
-    .i_ribx_gnt   ( 0   ),
-    .i_ribx_rsp   ( 0   ),
-    .o_ribx_rdy   (    ),
+    .o_ribx_addr  ( sdram_addr  ),
+    .o_ribx_wrcs  ( sdram_wrcs  ),
+    .o_ribx_mask  ( sdram_mask  ),
+    .o_ribx_wdata ( sdram_wdata ),
+    .i_ribx_rdata ( sdram_rdata ),
+    .o_ribx_req   ( sdram_req   ),
+    .i_ribx_gnt   ( sdram_gnt   ),
+    .i_ribx_rsp   ( sdram_rsp   ),
+    .o_ribx_rdy   ( sdram_rdy   ),
 
     .o_ribp_addr  ( periph_addr  ),
     .o_ribp_wrcs  ( periph_wrcs  ),
@@ -72,6 +90,29 @@ CORE_TOP u_CORE_TOP(
     .i_ribp_rsp   ( periph_rsp   ),
     .o_ribp_rdy   ( periph_rdy   )
 );
+
+`ifdef USE_SDRAM
+
+SDRAM2RIB u_SDRAM2RIB(
+    .i_clk        ( i_clk        ),
+    .i_rstn       ( i_rstn       ),
+
+    .i_ribs_addr  ( sdram_addr   ),
+    .i_ribs_wrcs  ( sdram_wrcs   ),
+    .i_ribs_mask  ( sdram_mask   ),
+    .i_ribs_wdata ( sdram_wdata  ),
+    .o_ribs_rdata ( sdram_rdata  ),
+    .i_ribs_req   ( sdram_req    ),
+    .o_ribs_gnt   ( sdram_gnt    ),
+    .o_ribs_rsp   ( sdram_rsp    ),
+    .i_ribs_rdy   ( sdram_rdy    )
+);
+
+`else 
+assign sdram_rdata=0;
+assign sdram_gnt=0;
+assign sdram_rsp=0;
+`endif
 
 
 
