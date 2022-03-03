@@ -4,7 +4,7 @@
         <Baud_Rate>115200</Baud_Rate>
         <Custom_Baud_Rate></Custom_Baud_Rate>
         <Data_Bits>8</Data_Bits>
-        <Incoming_Clk_Rate>72000000</Incoming_Clk_Rate>
+        <Incoming_Clk_Rate>84000000</Incoming_Clk_Rate>
         <Parity>None</Parity>
         <Stop_Bits>1</Stop_Bits>
     </Config>

@@ -18,13 +18,13 @@
 	</Page2>
 	<Page3>
 		<setting>frequncy_setting</setting>
-		<multiplication_factor>3</multiplication_factor>
-		<division_factor>1</division_factor>
+		<multiplication_factor>7</multiplication_factor>
+		<division_factor>2</division_factor>
 		<clocks>
 			<clock>
 				<id>0</id>
-				<clock_division_factor>14</clock_division_factor>
-				<clock_frequency>72.0000000000000000Mhz</clock_frequency>
+				<clock_division_factor>12</clock_division_factor>
+				<clock_frequency>84.0000000000000000Mhz</clock_frequency>
 				<phase_shift>0.0000000000000000deg</phase_shift>
 			</clock>
 		</clocks>
