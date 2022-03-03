@@ -156,21 +156,23 @@ assign o_rdwen0 = (alu_rdwen | bju_rdwen | scu_rdwen) & i_rdwen;
 assign o_rdidx0 = i_rdidx;
 assign o_rdwdata0 = alu_rdwen ? alu_rdwdata : 
                     bju_rdwen ? bju_rdwdata : 
-                    scu_rdwen ? scu_rdwdata : 0;
+                    scu_rdwdata;
 
 //读写检测
-assign o_exu_rdwen0 = i_rdwen;
+assign o_exu_rdwen0 = (i_decinfo_grp[`decinfo_grp_lsu] | i_decinfo_grp[`decinfo_grp_mdu]) & i_rdwen;
 assign o_exu_rdidx0 = i_rdidx;
 
 /******************************************************************************
  * mdu指令区块
  ******************************************************************************/
 
+wire mdu_will_rdwen;
+wire[`rfidxlen_def] mdu_will_rdidx;
+
 //假如发生了mdu的 写后写冲突
 //需要设置mdu的rdwen为0
 //当前的单周期指令与mdu的指令写入同一个寄存器
-wire mdu_flush = (i_rdwen&o_exu_rdwen1) ? (i_rdidx == o_exu_rdidx1) : 0;
-
+wire mdu_flush = (i_rdwen & mdu_will_rdwen) ? (i_rdidx == mdu_will_rdidx) : 0;
 
 wire mdu_working;
 EXU_MDU u_EXU_MDU(
@@ -188,13 +190,17 @@ EXU_MDU u_EXU_MDU(
     .i_mdu_op2     ( i_exu_op2     ),
 
     .o_working     ( mdu_working     ),
-    .o_will_rdwen  ( o_exu_rdwen1  ),
-    .o_will_rdidx  ( o_exu_rdidx1  ),
+    .o_will_rdwen  ( mdu_will_rdwen  ),
+    .o_will_rdidx  ( mdu_will_rdidx  ),
 
     .o_mdu_rdwen   ( o_rdwen1   ),
     .o_mdu_rdidx   ( o_rdidx1   ),
     .o_mdu_rdwdata  ( o_rdwdata1  )
 );
+
+//mdu读写检测
+assign o_exu_rdwen1 = mdu_will_rdwen ;
+assign o_exu_rdidx1 = mdu_will_rdidx;
 
 assign o_mdu_working = mdu_working;
 
@@ -206,8 +212,10 @@ assign o_mdu_working = mdu_working;
  * lsu指令区块
  ******************************************************************************/
 
-wire lsu_flush = (i_rdwen&o_exu_rdwen2) ? (i_rdidx == o_exu_rdidx2) : 0;
+wire lsu_will_rdwen;
+wire[`rfidxlen_def] lsu_will_rdidx;
 
+wire lsu_flush = (i_rdwen&lsu_will_rdwen) ? (i_rdidx == lsu_will_rdidx) : 0;
 wire lsu_working;
 EXU_LSU u_EXU_LSU(
     .i_clk          ( i_clk          ),
@@ -224,8 +232,8 @@ EXU_LSU u_EXU_LSU(
     .i_lsu_addr     ( alu2lsu_result     ),
 
     .o_working      ( lsu_working      ),
-    .o_will_rdwen   ( o_exu_rdwen2   ),
-    .o_will_rdidx   ( o_exu_rdidx2   ),
+    .o_will_rdwen   ( lsu_will_rdwen   ),
+    .o_will_rdidx   ( lsu_will_rdidx   ),
 
     .o_lsu_rdwen    ( o_rdwen2     ),
     .o_lsu_rdidx    ( o_rdidx2    ),
@@ -242,6 +250,8 @@ EXU_LSU u_EXU_LSU(
     .o_ribm_rdy     ( o_ribm_rdy     )
 );
 
+assign o_exu_rdwen2 = lsu_will_rdwen;
+assign o_exu_rdidx2 = lsu_will_rdidx;
 
 assign o_lsu_working = lsu_working;
 

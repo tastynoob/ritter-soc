@@ -36,26 +36,28 @@ module EXU_ALU (
     output wire[`xlen_def] o_lsu_result
 );
 
-    wire[`xlen_def] alu_add = {`xlen{i_decinfo_grp[`decinfo_grp_add]}} & (i_alu_op1 + i_alu_op2);
+    // wire[`xlen_def] alu_add = {`xlen{i_decinfo_grp[`decinfo_grp_add]}} & (i_alu_op1 + i_alu_op2);
+    // wire[`xlen_def] alu_sub = {`xlen{i_aluinfo[`aluinfo_sub]}} & (i_alu_op1 - i_alu_op2);
+    // wire[`xlen_def] alu_sll = {`xlen{i_aluinfo[`aluinfo_sll]}} & (i_alu_op1 << i_alu_op2);
+    // wire[`xlen_def] alu_srl = {`xlen{i_aluinfo[`aluinfo_srl]}} & (i_alu_op1 >> i_alu_op2);
+    // wire[`xlen_def] alu_sra = {`xlen{i_aluinfo[`aluinfo_sra]}} & (({32{i_alu_op1[31]}} << (6'd32 - {1'b0, i_alu_op2[4:0]})) | (i_alu_op1 >> i_alu_op2[4:0]));
+    // wire[`xlen_def] alu_xor = {`xlen{i_aluinfo[`aluinfo_xor]}} & (i_alu_op1 ^ i_alu_op2);
+    // wire[`xlen_def] alu_and = {`xlen{i_aluinfo[`aluinfo_and]}} & (i_alu_op1 & i_alu_op2);
+    // wire[`xlen_def] alu_or = {`xlen{i_aluinfo[`aluinfo_or]}} & (i_alu_op1 | i_alu_op2);
+    // wire[`xlen_def] alu_slt = {`xlen{i_aluinfo[`aluinfo_slt]}} & (($signed(i_alu_op1)) < ($signed(i_alu_op2)));
+    // wire[`xlen_def] alu_sltu = {`xlen{i_aluinfo[`aluinfo_sltu]}} & (i_alu_op1 < i_alu_op2);
 
-    wire[`xlen_def] alu_sub = {`xlen{i_aluinfo[`aluinfo_sub]}} & (i_alu_op1 - i_alu_op2);
 
-    wire[`xlen_def] alu_sll = {`xlen{i_aluinfo[`aluinfo_sll]}} & (i_alu_op1 << i_alu_op2);
-
-    wire[`xlen_def] alu_srl = {`xlen{i_aluinfo[`aluinfo_srl]}} & (i_alu_op1 >> i_alu_op2);
-
-
-    wire[`xlen_def] alu_sra = {`xlen{i_aluinfo[`aluinfo_sra]}} & (({32{i_alu_op1[31]}} << (6'd32 - {1'b0, i_alu_op2[4:0]})) | (i_alu_op1 >> i_alu_op2[4:0]));
-
-    wire[`xlen_def] alu_xor = {`xlen{i_aluinfo[`aluinfo_xor]}} & (i_alu_op1 ^ i_alu_op2);
-
-    wire[`xlen_def] alu_and = {`xlen{i_aluinfo[`aluinfo_and]}} & (i_alu_op1 & i_alu_op2);
-
-    wire[`xlen_def] alu_or = {`xlen{i_aluinfo[`aluinfo_or]}} & (i_alu_op1 | i_alu_op2);
-
-    wire[`xlen_def] alu_slt = {`xlen{i_aluinfo[`aluinfo_slt]}} & (($signed(i_alu_op1)) < ($signed(i_alu_op2)));
-
-    wire[`xlen_def] alu_sltu = {`xlen{i_aluinfo[`aluinfo_sltu]}} & (i_alu_op1 < i_alu_op2);
+    wire[`xlen_def] alu_add = i_decinfo_grp[`decinfo_grp_add] ? (i_alu_op1 + i_alu_op2) : 0;
+    wire[`xlen_def] alu_sub = i_aluinfo[`aluinfo_sub] ? (i_alu_op1 - i_alu_op2) : 0;
+    wire[`xlen_def] alu_sll = i_aluinfo[`aluinfo_sll] ? (i_alu_op1 << i_alu_op2) : 0;
+    wire[`xlen_def] alu_srl = i_aluinfo[`aluinfo_srl] ? (i_alu_op1 >> i_alu_op2) : 0;
+    wire[`xlen_def] alu_sra = i_aluinfo[`aluinfo_sra] ? (({32{i_alu_op1[31]}} << (6'd32 - {1'b0, i_alu_op2[4:0]})) | (i_alu_op1 >> i_alu_op2[4:0])) : 0;
+    wire[`xlen_def] alu_xor = i_aluinfo[`aluinfo_xor] ? (i_alu_op1 ^ i_alu_op2) : 0;
+    wire[`xlen_def] alu_and = i_aluinfo[`aluinfo_and] ? (i_alu_op1 & i_alu_op2) : 0;
+    wire[`xlen_def] alu_or = i_aluinfo[`aluinfo_or]   ?  (i_alu_op1 | i_alu_op2) : 0;
+    wire[`xlen_def] alu_slt = i_aluinfo[`aluinfo_slt] ? (($signed(i_alu_op1)) < ($signed(i_alu_op2))) : 0;
+    wire[`xlen_def] alu_sltu = i_aluinfo[`aluinfo_sltu] ? (i_alu_op1 < i_alu_op2) : 0;
 
 
     assign o_lsu_result = alu_add;

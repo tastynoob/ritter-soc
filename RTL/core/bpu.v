@@ -33,6 +33,10 @@ module BPU (
     input wire i_rdwen,
     input wire[`rfidxlen_def] i_rdidx,
     input wire[`xlen_def] i_rd_wdata,
+    //旁路写回
+    input wire i_bypass_rdwen,
+    input wire[`rfidxlen_def] i_bypass_rdidx,
+    input wire[`xlen_def] i_bypass_rd_wdata,
 
     //分支预测的结果
     output wire o_bpu_taken,//分支预测跳转,同时冲刷流水线
@@ -158,6 +162,7 @@ assign o_bpu_rs1ren = inst_vld&rs1ren;
 assign o_bpu_rs1idx = rs1idx;
 assign o_bpu_rs2ren = inst_vld&rs2ren;
 assign o_bpu_rs2idx = rs2idx;
+
 //读寄存器的条件:指令为jalr,rs1idx!=0
 wire jalr_rs1ren = inst_jalr & (inst_rs1idx!=0);
 
@@ -196,7 +201,11 @@ REGFILE u_REGFILE(
     .o_rs1_rdata ( rs1_rdata ),
     .i_rs2ren    ( rs2ren    ),
     .i_rs2idx    ( rs2idx    ),
-    .o_rs2_rdata  ( rs2_rdata  )
+    .o_rs2_rdata  ( rs2_rdata  ),
+
+    .i_bypass_rdwen ( i_bypass_rdwen ),
+    .i_bypass_rdidx ( i_bypass_rdidx ),
+    .i_bypass_rd_wdata  ( i_bypass_rd_wdata )
 );
 
 

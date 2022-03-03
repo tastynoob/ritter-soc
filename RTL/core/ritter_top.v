@@ -154,6 +154,10 @@ module RITTER_TOP (
     wire[`decinfo_grplen_def] bpu_decinfo_grp;
     wire[`decinfolen_def] bpu_decinfo;
     wire[`xlen_def] bpu_iaddr;
+    //旁路
+    wire exu_rdwen0;
+    wire[`rfidxlen_def] exu_rdidx0;
+    wire[`xlen_def] exu_rdwdata0;
     BPU u_BPU(
         .i_clk         ( i_clk         ),
         .i_rstn        ( i_rstn        ),
@@ -173,6 +177,11 @@ module RITTER_TOP (
         .i_rdwen       ( wb_rdwen       ),
         .i_rdidx       ( wb_rdidx       ),
         .i_rd_wdata    ( wb_rdwdata     ),
+
+        //旁路写回
+        .i_bypass_rdwen ( exu_rdwen0 ),
+        .i_bypass_rdidx ( exu_rdidx0 ),
+        .i_bypass_rd_wdata  ( exu_rdwdata0 ),
 
 
         //将跳转信号寄存一个周期
@@ -239,7 +248,8 @@ module RITTER_TOP (
         .i_rstn        ( i_rstn        ),
 
         .i_dis_vld     ( (~ctrl2dis_wait)    ),//todo
-        .i_flush       ( bpu_taken_gen|exu_taken_gen|ctrl2dis_flush ),
+        //假如bpu发生跳转,同时wb发出wait请求,不需要冲刷dis
+        .i_flush       ( (ctrl2dis_wait&(~ctrl2exu_resource_match) ? 0 :bpu_taken_gen)|exu_taken_gen|ctrl2dis_flush ),
 
         //寄存一次跳转信号
         .i_bpu_taken   ( bpu_taken   ),
@@ -280,9 +290,7 @@ module RITTER_TOP (
     );
 
 
-    wire exu_rdwen0;
-    wire[`rfidxlen_def] exu_rdidx0;
-    wire[`xlen_def] exu_rdwdata0;
+    
     wire exu_mdu_working;
     wire exu_rdwen1;
     wire[`rfidxlen_def] exu_rdidx1;

@@ -9,11 +9,13 @@
 
 _start:
 
+
+
 .option push
 .option norelax
 	la gp, __global_pointer$
 .option pop
-	la sp, _sp
+	la sp, _sp 
 
 	/* Load data section */
 	la a0, _data_lma 

@@ -9,17 +9,17 @@ ritter-soc是我大二时期花了半年时间自研出来的基于riscv指令�
 该项目使用sipeed公司的tang premier FPGA开发板上开发     
 目前ritter-soc支持完整的riscv32IM指令集     
 并在此基础上添加了简易的浮点加速单元(FPU)       
-能够运行完整复杂的程序          
+能够运行完整复杂的程序
 
 ### ritter-soc架构图 (仅作参考)
 ![0.png](https://s2.loli.net/2022/02/25/cmg9uCvsF3k8wBr.png)
 
 
 ### ritter-soc工作状态
-工作频率:84MHZ      
+工作频率:72MHZ      
 外设:一个串口,一个计数器 (以后会慢慢更新)       
 coremark跑分:       
-![1.png](https://s2.loli.net/2022/02/25/rWthdiROxLyUC2a.png)
+![1.png](https://s2.loli.net/2022/03/03/b7jKDser5oBfO2l.png)
 
 
 ## 使用说明
@@ -35,4 +35,5 @@ coremark跑分:
 3.在进行仿真时,注意需要导入安路的硬件仿真库(位于TD软件安装目录下的sim_release)      
 
 ## 更新日志
+22/3/3: 优化了单周期指令执行时序,工作频率改为了72Mhz
 22/2/25:上传ritter-sco工程

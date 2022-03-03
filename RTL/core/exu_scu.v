@@ -52,9 +52,9 @@ module EXU_SCU (
 
 
     assign o_csr_wen =   i_decinfo_grp[`decinfo_grp_scu] & i_scuinfo[`scuinfo_csrwen];
-    assign o_csr_wdata = ({32{i_scuinfo[`scuinfo_csrrw]}} & csr_rw) |
-                         ({32{i_scuinfo[`scuinfo_csrrs]}} & csr_rs) |
-                         ({32{i_scuinfo[`scuinfo_csrrc]}} & csr_rc); 
+    assign o_csr_wdata = (i_scuinfo[`scuinfo_csrrw] ? csr_rw : 0) |
+                         (i_scuinfo[`scuinfo_csrrs] ? csr_rs : 0) |
+                         (i_scuinfo[`scuinfo_csrrc] ? csr_rc : 0); 
 
     
     assign o_scu_rdwen = i_decinfo_grp[`decinfo_grp_scu] & i_decinfo_grp[`decinfo_grp_scu];

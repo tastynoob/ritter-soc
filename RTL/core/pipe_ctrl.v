@@ -39,13 +39,17 @@ module PIPE_CTRL (
 //同时发生读写冲突与写回冲突
 
     wire rs1_match =    i_bpu_rs1ren ? 
-                        ((i_exu_rdwen0 & (i_bpu_rs1idx == i_exu_rdidx0)) |
+                        (
+                        (i_exu_rdwen0 & (i_bpu_rs1idx == i_exu_rdidx0)) |
                         (i_exu_rdwen1 & (i_bpu_rs1idx == i_exu_rdidx1)) |
-                        (i_exu_rdwen2 & (i_bpu_rs1idx == i_exu_rdidx2))) : 0;
+                        (i_exu_rdwen2 & (i_bpu_rs1idx == i_exu_rdidx2))
+                        ) : 0;
     wire rs2_match =   i_bpu_rs2ren ? 
-                        ((i_exu_rdwen0 & (i_bpu_rs2idx == i_exu_rdidx0)) |
+                        (
+                        (i_exu_rdwen0 & (i_bpu_rs2idx == i_exu_rdidx0)) |
                         (i_exu_rdwen1 & (i_bpu_rs2idx == i_exu_rdidx1)) |
-                        (i_exu_rdwen2 & (i_bpu_rs2idx == i_exu_rdidx2))) : 0;
+                        (i_exu_rdwen2 & (i_bpu_rs2idx == i_exu_rdidx2))
+                        ) : 0;
 
     //写后读冲突
     wire read_after_write = rs1_match | rs2_match;
@@ -58,6 +62,7 @@ module PIPE_CTRL (
     //假如exu发生资源冲突,并且bpu发生读写冲突,不需要冲刷dis
     //假如只发生bpu读写冲突,则需要冲刷dis
     //假如发生写回冲突,并且发生读写冲突，不需要冲刷dis
+    //假如bpu发生跳转,同时wb发出wait请求,不需要冲刷dis
     assign o_dis_flush = (i_exu_resource_match | i_wb_match) ? 0 : read_after_write;
 
 

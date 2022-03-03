@@ -10,14 +10,14 @@ void delayms(uint32_t ms) {
 }
 
 
-//调用muldf3会写2次t2
 
-int* ptr = 0x02000000;
 
-int main() {
-    printf("start test\n");
-    delayms(1000);
-    printf("delay 1000 finish\n");
-    printf("write finish\n");
-}
+// char buff[100];
+// int main() {
+    
+//     printf("123,%f\n",1.2);
+// }
+
+
+
 

@@ -24,7 +24,7 @@
     "c/cpp-compiler": {
         "language-c": "gnu11",
         "language-cpp": "c++11",
-        "optimization": "level-0",
+        "optimization": "level-3",
         "warnings": "all-warnings",
         "C_FLAGS": "-Wl,-Bstatic -ffunction-sections -fdata-sections",
         "CXX_FLAGS": "-ffunction-sections -fdata-sections"

@@ -1,4 +1,4 @@
-// See LICENSE for license details.
+
 
 #ifndef __RISCV_TEST_H
 #define __RISCV_TEST_H

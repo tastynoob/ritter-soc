@@ -15,12 +15,19 @@ module REGFILE (
     input wire i_rdwen,
     input wire[`rfidxlen_def] i_rdidx,
     input wire[`xlen_def] i_rd_wdata,
+
     input wire i_rs1ren,
     input wire[`rfidxlen_def] i_rs1idx,
     output wire[`xlen_def] o_rs1_rdata,
+
     input wire i_rs2ren,
     input wire[`rfidxlen_def] i_rs2idx,
-    output wire[`xlen_def] o_rs2_rdata
+    output wire[`xlen_def] o_rs2_rdata,
+    //旁路
+    input wire i_bypass_rdwen,
+    input wire[`rfidxlen_def] i_bypass_rdidx,
+    input wire[`xlen_def] i_bypass_rd_wdata
+
 );
 
 
@@ -43,8 +50,27 @@ module REGFILE (
     endgenerate
 
 
-    assign o_rs1_rdata = i_rs1ren ? ((i_rs1idx == i_rdidx) & i_rdwen ? i_rd_wdata : rfxs[i_rs1idx]) : 0;
-    assign o_rs2_rdata = i_rs2ren ? ((i_rs2idx == i_rdidx) & i_rdwen ? i_rd_wdata : rfxs[i_rs2idx]) : 0;
+    assign o_rs1_rdata =    i_rs1ren ? 
+                            (
+                            ((i_rs1idx == i_bypass_rdidx) & i_bypass_rdwen)  ?
+                            i_bypass_rd_wdata :
+                                (
+                                ((i_rs1idx == i_rdidx) & i_rdwen) ? i_rd_wdata 
+                                : rfxs[i_rs1idx]
+                                )
+                            ) 
+                            : 0;
+
+    assign o_rs2_rdata =    i_rs2ren ? 
+                            (
+                            ((i_rs2idx == i_bypass_rdidx) & i_bypass_rdwen)  ?
+                            i_bypass_rd_wdata :
+                                (
+                                ((i_rs2idx == i_rdidx) & i_rdwen) ? i_rd_wdata 
+                                : rfxs[i_rs2idx]
+                                )
+                            ) 
+                            : 0;
 
 
     wire[31:0] x1_ra = rfxs[1];
@@ -79,6 +105,102 @@ module REGFILE (
     wire[31:0] x30_t5 = rfxs[30];
     wire[31:0] x31_t6 = rfxs[31];
 
+    // always @(posedge i_clk) begin
+    //     if(x1_ra == 32'h83)begin
+    //         $stop();
+    //     end
+    //     //判断哪个寄存器的值为0x31
+    //     if(x2_sp == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x3_gp == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x4_tp == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x5_t0 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x6_t1 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x7_t2 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x8_s0 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x9_s1 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x10_a0 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x11_a1 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x12_a2 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x13_a3 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x14_a4 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x15_a5 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x16_a6 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x17_a7 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x18_s2 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x19_s3 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x20_s4 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x21_s5 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x22_s6 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x23_s7 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x24_s8 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x25_s9 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x26_s10 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x27_s11 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x28_t3 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x29_t4 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x30_t5 == 32'h83)begin
+    //         $stop();
+    //     end
+    //     if(x31_t6 == 32'h83)begin
+    //         $stop();
+    //     end
+    // end
 
 
 
