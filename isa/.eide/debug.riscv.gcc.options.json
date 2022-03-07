@@ -23,7 +23,7 @@
     },
     "c/cpp-compiler": {
         "language-c": "gnu11",
-        "language-cpp": "c++11",
+        "language-cpp": "c++17",
         "optimization": "level-3",
         "warnings": "all-warnings",
         "C_FLAGS": "-Wl,-Bstatic -ffunction-sections -fdata-sections",
@@ -34,6 +34,6 @@
     },
     "linker": {
         "output-format": "elf",
-        "LD_FLAGS": "-Wl,--cref -Wl,--no-relax -Wl,--gc-sections --specs=nosys.specs --specs=nano.specs -nostartfiles -u _printf_float"
+        "LD_FLAGS": "-Wl,--cref -Wl,--no-relax -Wl,--gc-sections --specs=nosys.specs --specs=nano.specs -nostartfiles"
     }
 }

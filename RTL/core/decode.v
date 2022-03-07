@@ -204,6 +204,7 @@ module DECODE (
     //不需要译码jalr,jal的立即数
     //对于移位指令，由于移位只需要立即数低5位，高位省略，所以为了方便，直接将inst_i_type_imm当作shamt
     assign o_imm =  ({`xlen{opc_lui|opc_auipc}} & inst_u_type_imm) |
+                    ({`xlen{opc_jalr}} & inst_i_type_imm) |
                     ({`xlen{opc_branch}} & inst_b_type_imm) |
                     ({`xlen{opc_store}} & inst_s_type_imm) |
                     ({`xlen{opc_load}} & inst_i_type_imm) |
@@ -285,7 +286,8 @@ module DECODE (
 
     //BJU
     wire[`decinfolen_def] bjuinfo;
-    assign bjuinfo[`bjuinfo_jal]=opc_jal | opc_jalr;
+    assign bjuinfo[`bjuinfo_jal]=opc_jal;
+    assign bjuinfo[`bjuinfo_jalr]=opc_jalr;
     assign bjuinfo[`bjuinfo_beq]=inst_beq;
     assign bjuinfo[`bjuinfo_bne]=inst_bne;
     assign bjuinfo[`bjuinfo_blt]=inst_blt;

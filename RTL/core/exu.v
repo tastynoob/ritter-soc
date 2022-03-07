@@ -114,6 +114,7 @@ EXU_BJU u_EXU_BJU(
     .i_bju_rdidx   ( i_rdidx   ),
     .i_decinfo_grp ( i_decinfo_grp ),
     .i_bjuinfo     ( i_decinfo     ),
+    
     .i_iaddr       ( i_iaddr       ),
     .i_imm         ( i_imm         ),
     .i_bju_op1     ( i_exu_op1     ),

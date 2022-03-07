@@ -37,7 +37,8 @@ int get_line(char* buff) {
 
 int _write(int fd, char* pBuffer, int size) {
     for (int i = 0;i<size;i++) {
-        send_char(pBuffer[i]);
+        //send_char(pBuffer[i]);
+        asm("mv tp,%0" : : "r"(pBuffer[i]));
     }
     return size;
 }

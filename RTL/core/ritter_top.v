@@ -371,7 +371,9 @@ module RITTER_TOP (
         .i_clk       ( i_clk       ),
         .i_rstn      ( i_rstn      ),
 
-        .i_flush     ( exu_taken_gen   ),
+        //注意,假如wb模块发生写回冲突,同时发生跳转,
+        //不能冲刷写回模块
+        .i_flush     ( ctrl2wb_match? 0 : exu_taken_gen   ),
 
         .i_rdwen0    ( exu_rdwen0    ),
         .i_rdidx0    ( exu_rdidx0    ),

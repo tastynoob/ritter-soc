@@ -41,11 +41,6 @@ assign o_gpio_out = gpio_out;
 
 
 
-
-
-
-
-
 assign o_ribs_gnt = i_ribs_req;
 reg handshake_rdy;
 always @(posedge i_clk or negedge i_rstn) begin

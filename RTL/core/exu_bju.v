@@ -20,6 +20,7 @@ module EXU_BJU (
     input wire[`rfidxlen_def] i_bju_rdidx,
     input wire[`decinfo_grplen_def] i_decinfo_grp,
     input wire[`decinfolen_def] i_bjuinfo,
+    input wire[`xlen_def] i_rs1_rdata,
 
 
     //当前跳转指令的地址
@@ -57,7 +58,7 @@ module EXU_BJU (
     wire[`xlen_def] bxx_nxtpc = i_iaddr + i_imm;
 
     //对于jal/jalr指令，需要将pc+4地址写入rd寄存器
-    assign o_bju_rdwen = i_decinfo_grp[`decinfo_grp_bju] & i_bjuinfo[`bjuinfo_jal];
+    assign o_bju_rdwen = i_decinfo_grp[`decinfo_grp_bju] & (i_bjuinfo[`bjuinfo_jal] | i_bjuinfo[`bjuinfo_jalr]);
     assign o_bju_rdidx = i_bju_rdidx;
     assign o_bju_rdwdata = i_iaddr + 4;
 
@@ -65,8 +66,9 @@ module EXU_BJU (
     //如果bflag==1 & judgeflag==0 需要跳转，跳转地址为当前地址iaddr+4
     //如果bflag==0 & judgeflag==1 需要跳转，跳转地址为当前地址pc+imm
     //如果bflag==0 & judgeflag==0 不用跳转
-    assign o_bju_taken = i_decinfo_grp[`decinfo_grp_bju] & (i_bjuinfo[`bjuinfo_bpu_bflag] ^ judgeflag);
-    assign o_bju_jaddr = i_bjuinfo[`bjuinfo_bpu_bflag] ? i_iaddr + 4 : bxx_nxtpc;
+    //如果是jalr指令,需要跳转
+    assign o_bju_taken = i_decinfo_grp[`decinfo_grp_bju] & ((i_bjuinfo[`bjuinfo_bpu_bflag] ^ judgeflag) | i_bjuinfo[`bjuinfo_jalr]);
+    assign o_bju_jaddr = i_bjuinfo[`bjuinfo_jalr] ? i_bju_op1+i_imm : (i_bjuinfo[`bjuinfo_bpu_bflag] ? i_iaddr + 4 : bxx_nxtpc);
     
     
 endmodule

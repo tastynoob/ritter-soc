@@ -117,14 +117,15 @@
 /***********************************************/
 //bju分支选择,要用到加法
 `define bjuinfo_jal 1 //对于jal/jalr指令，需要将pc+4地址写入rd寄存器
-`define bjuinfo_beq 2
-`define bjuinfo_bne 3
-`define bjuinfo_blt 4
-`define bjuinfo_bge 5
-`define bjuinfo_bltu 6
-`define bjuinfo_bgeu 7
-`define bjuinfo_bpu_bflag 8
-`define bjuinfolen 9
+`define bjuinfo_jalr 2
+`define bjuinfo_beq 3
+`define bjuinfo_bne 4
+`define bjuinfo_blt 5
+`define bjuinfo_bge 6
+`define bjuinfo_bltu 7
+`define bjuinfo_bgeu 8
+`define bjuinfo_bpu_bflag 9
+`define bjuinfolen 10
 /***********************************************/
 //mdu乘除法选择
 `define mduinfo_mul 1
