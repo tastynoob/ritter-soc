@@ -27,7 +27,7 @@ module BPU_BP (
     input wire i_inst_bxx,
     input wire[`xlen_def] i_imm,//立即数
     input wire[`xlen_def] i_jalr_rs1rdata,//jalr rs1读取的值
-
+  
     //允许进行跳转
     output wire o_prdt_taken,
     output wire[`xlen_def] o_prdt_pc //预分支地址

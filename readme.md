@@ -3,7 +3,7 @@
 ## 介绍
 
 ### ritter-soc信息
-ritter-soc是我大二时期花了半年时间自研出来的基于riscv指令集的处理器     
+ritter-soc是我从大一时期到大二时期花了半年时间自研出来的基于riscv指令集的处理器     
 里面包括ritter-core以及总线和外设       
 所有设计均采用verilog设计       
 该项目使用sipeed公司的tang premier FPGA开发板上开发     
@@ -35,5 +35,6 @@ coremark跑分:
 3.在进行仿真时,注意需要导入安路的硬件仿真库(位于TD软件安装目录下的sim_release)      
 
 ## 更新日志
-22/3/3: 优化了单周期指令执行时序
-22/2/25:上传ritter-sco工程
+22/3/3: 优化了指令执行时序,版本改为v1.3
+22/2/25:ritter-soc 1.0发布
+21/7/24:ritter-core 0.1发布(不推荐使用)
