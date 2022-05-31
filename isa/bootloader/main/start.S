@@ -8,6 +8,11 @@
 
 
 _start:
+	jal enter
+//填充60k字节
+	.fill 62*1024,1,0x00;
+
+enter:
 .option push
 .option norelax
 	la gp, __global_pointer$

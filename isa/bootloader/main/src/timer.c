@@ -12,12 +12,6 @@ void timer_clear() {
 }
 u64 timer_getms() {
     u64 time = (((u64)(TIMER->hi)) << 32) + ((u64)(TIMER->lo));
-    time = time / 80000;
-    return time;
-}
-
-u64 timer_getus() {
-    u64 time = (((u64)(TIMER->hi)) << 32) + ((u64)(TIMER->lo));
-    time = time / 80;
+    time = time / 84000;
     return time;
 }

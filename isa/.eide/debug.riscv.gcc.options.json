@@ -12,7 +12,7 @@
             "name": "toasm",
             "disable": false,
             "abortAfterFailed": false,
-            "command": "\"E:\\Program Files (x86)\\xpack-riscv-none-embed-gcc-8.3.0-2.3\\bin\\riscv-none-embed-objdump.exe\" -S -D .\\build\\Debug\\tinymcu.elf > 1.edasm"
+            "command": "\"E:\\ProgramFilesx86\\xpack-riscv-none-embed-gcc-8.3.0-2.3\\bin\\riscv-none-embed-objdump.exe\" -S -D .\\build\\Debug\\tinymcu.elf > 1.edasm"
         }
     ],
     "global": {
@@ -34,6 +34,6 @@
     },
     "linker": {
         "output-format": "elf",
-        "LD_FLAGS": "-Wl,--cref -Wl,--no-relax -Wl,--gc-sections --specs=nosys.specs --specs=nano.specs -nostartfiles -u _printf_float"
+        "LD_FLAGS": "-Wl,--cref -Wl,--no-relax -Wl,--gc-sections --specs=nosys.specs --specs=nano.specs -nostartfiles"
     }
 }

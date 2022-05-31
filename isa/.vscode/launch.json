@@ -2,30 +2,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "venus",
-            "request": "launch",
-            "name": "Launch current file with all options",
-            "program": "${file}",
-            "stopOnEntry": true,
-            "stopAtBreakpoints": true,
-            "openViews": [
-                "Robot",
-                "LED Matrix",
-                "Seven Segment Board"
-            ],
-            "ledMatrixSize": {
-                "x": 10,
-                "y": 10
-            }
-        },
-        {
             "cwd": "${workspaceRoot}",
             "type": "cortex-debug",
             "request": "launch",
             "name": "jlink",
             "servertype": "jlink",
             "interface": "swd",
-            "executable": ".\\build\\Debug\\tinymcu.elf",
+            "executable": "build\\Debug\\tinymcu.elf",
             "runToMain": true,
             "device": "STM32F103C8"
         }

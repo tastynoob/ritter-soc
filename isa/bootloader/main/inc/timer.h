@@ -5,9 +5,9 @@
 
 
 typedef struct {
-    volatile u32 ctrl;
-    volatile u32 lo;
-    volatile u32 hi;
+    int ctrl;
+    int lo;
+    int hi;
 }TIMER_DEF;
 
 #define TIMER_BASE 0xf2000000
@@ -17,4 +17,3 @@ typedef struct {
 
 void timer_clear();
 u64 timer_getms();
-u64 timer_getus();

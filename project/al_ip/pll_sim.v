@@ -1,25 +1,27 @@
 // Verilog netlist created by TD v5.0.38657
-// Thu Mar  3 11:35:37 2022
+// Tue May 31 20:09:53 2022
 
 `timescale 1ns / 1ps
-module pll  // pll.v(22)
+module pll  // pll.v(23)
   (
   refclk,
   reset,
   clk0_out,
+  clk1_out,
   extlock
   );
 
-  input refclk;  // pll.v(27)
-  input reset;  // pll.v(28)
-  output clk0_out;  // pll.v(30)
-  output extlock;  // pll.v(29)
+  input refclk;  // pll.v(29)
+  input reset;  // pll.v(30)
+  output clk0_out;  // pll.v(32)
+  output clk1_out;  // pll.v(33)
+  output extlock;  // pll.v(31)
 
-  wire clk0_buf;  // pll.v(32)
+  wire clk0_buf;  // pll.v(35)
 
   EG_PHY_GCLK bufg_feedback (
     .clki(clk0_buf),
-    .clko(clk0_out));  // pll.v(34)
+    .clko(clk0_out));  // pll.v(37)
   EG_PHY_CONFIG #(
     .DONE_PERSISTN("ENABLE"),
     .INIT_PERSISTN("ENABLE"),
@@ -27,15 +29,15 @@ module pll  // pll.v(22)
     .PROGRAMN_PERSISTN("DISABLE"))
     config_inst ();
   EG_PHY_PLL #(
-    .CLKC0_CPHASE(11),
-    .CLKC0_DIV(12),
+    .CLKC0_CPHASE(9),
+    .CLKC0_DIV(10),
     .CLKC0_DIV2_ENABLE("DISABLE"),
     .CLKC0_ENABLE("ENABLE"),
     .CLKC0_FPHASE(0),
-    .CLKC1_CPHASE(1),
-    .CLKC1_DIV(1),
+    .CLKC1_CPHASE(8),
+    .CLKC1_DIV(9),
     .CLKC1_DIV2_ENABLE("DISABLE"),
-    .CLKC1_ENABLE("DISABLE"),
+    .CLKC1_ENABLE("ENABLE"),
     .CLKC1_FPHASE(0),
     .CLKC2_CPHASE(1),
     .CLKC2_DIV(1),
@@ -55,19 +57,19 @@ module pll  // pll.v(22)
     .DERIVE_PLL_CLOCKS("DISABLE"),
     .DPHASE_SOURCE("DISABLE"),
     .DYNCFG("DISABLE"),
-    .FBCLK_DIV(7),
+    .FBCLK_DIV(3),
     .FEEDBK_MODE("NORMAL"),
     .FEEDBK_PATH("CLKC0_EXT"),
     .FIN("24.000"),
     .FREQ_LOCK_ACCURACY(2),
     .GEN_BASIC_CLOCK("DISABLE"),
-    .GMC_GAIN(0),
+    .GMC_GAIN(2),
     .GMC_TEST(14),
     .ICP_CURRENT(9),
     .IF_ESCLKSTSW("DISABLE"),
     .INTFB_WAKE("DISABLE"),
     .KVCO(2),
-    .LPF_CAPACITOR(2),
+    .LPF_CAPACITOR(1),
     .LPF_RESISTOR(8),
     .NORESET("DISABLE"),
     .ODIV_MUXC0("DIV"),
@@ -85,7 +87,7 @@ module pll  // pll.v(22)
     .PREDIV_MUXC2("VCO"),
     .PREDIV_MUXC3("VCO"),
     .PREDIV_MUXC4("VCO"),
-    .REFCLK_DIV(2),
+    .REFCLK_DIV(1),
     .REFCLK_SEL("INTERNAL"),
     .STDBY_ENABLE("DISABLE"),
     .STDBY_VCO_ENA("DISABLE"),
@@ -106,8 +108,8 @@ module pll  // pll.v(22)
     .refclk(refclk),
     .reset(reset),
     .stdby(1'b0),
-    .clkc({open_n47,open_n48,open_n49,open_n50,clk0_buf}),
-    .extlock(extlock));  // pll.v(57)
+    .clkc({open_n47,open_n48,open_n49,clk1_out,clk0_buf}),
+    .extlock(extlock));  // pll.v(64)
 
 endmodule 
 

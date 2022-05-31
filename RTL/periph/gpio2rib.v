@@ -4,7 +4,15 @@
 
 
 
+/*
+地址:0xf0
 
+gpio0:j13
+gpio1:h13
+gpio2:f16
+gpio3:e16
+
+*/
 
 module GPIO2RIB (
     input wire i_clk,
@@ -38,11 +46,6 @@ reg[23:0] gpio_out;
 //0x08:gpio_in
 assign o_gpio_mode = gpio_mode;
 assign o_gpio_out = gpio_out;
-
-
-
-
-
 
 
 

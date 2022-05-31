@@ -7,26 +7,39 @@ module SOC_TOP (
     input wire i_rstn,
 
     input wire i_io_rx,
-    output wire o_io_tx
+    output wire o_io_tx,
+    input wire i_io_rx2,
+    output wire o_io_tx2,
+    inout wire[3:0] io_gpio
 );
 
 
 
 wire extlock;//lock信号为高代表输出时钟稳定
-wire clk_84mhz;
+wire sysclk;
 
 
 `ifndef SIMULATION
+
+// pll u_pll(
+//     .refclk  ( i_clk  ),//i
+//     .reset   ( ~i_rstn    ),//i
+//     .extlock ( extlock ),//o
+//     .clk0_out( sysclk )//o_clk 84mhz
+// ); 
+
 pll u_pll(
-    .refclk  ( i_clk  ),//i
-    .reset   ( ~i_rstn    ),//i
-    .extlock ( extlock ),//o
-    .clk0_out( clk_84mhz )//o_clk 84mhz
-); 
+    .refclk   ( i_clk   ),
+    .reset    ( ~i_rstn    ),
+    .extlock  ( extlock  ),
+    .clk0_out (  ),// 72mhz
+    .clk1_out ( sysclk )//80mhz
+);
+
 `else
 
 assign extlock = 1;
-assign clk_84mhz = i_clk;
+assign sysclk = i_clk;
 
 `endif
 
@@ -38,6 +51,7 @@ internal_reset u_internal_reset(
     .i_rstn ( i_rstn & extlock ),
     .o_reset  ( reset  )
 );
+
 
 
 
@@ -67,7 +81,7 @@ wire periph_rdy;
 
 
 CORE_TOP u_CORE_TOP(
-    .i_clk        ( clk_84mhz        ),
+    .i_clk        ( sysclk        ),
     .i_rstn       ( reset       ),
 
     .o_ribx_addr  ( sdram_addr  ),
@@ -116,8 +130,14 @@ assign sdram_rsp=0;
 
 
 
+
+wire[23:0] gpio_mode;
+wire[23:0] gpio_out;
+wire[23:0] gpio_in;
+
+
 PERIPH_TOP u_PERIPH_TOP(
-    .i_clk        ( clk_84mhz        ),
+    .i_clk        ( sysclk        ),
     .i_rstn       ( reset       ),
 
     .i_ribm_addr  ( periph_addr  ),
@@ -132,8 +152,29 @@ PERIPH_TOP u_PERIPH_TOP(
 
 
     .i_io_rx      ( i_io_rx      ),
-    .o_io_tx      ( o_io_tx      )
+    .o_io_tx      ( o_io_tx      ),
+    .i_io_rx2      ( i_io_rx2      ),
+    .o_io_tx2      ( o_io_tx2      ),
+    .o_gpio_mode    (gpio_mode),
+    .i_gpio_in      (gpio_in),
+    .o_gpio_out     (gpio_out)
 );
+
+
+
+generate
+    genvar i;
+    for(i=0;i<4;i=i+1)begin
+        //1为输出模式
+        assign io_gpio[i] = gpio_mode[i] ? gpio_out[i] : 1'bz;
+        assign gpio_in[i] = io_gpio[i];
+    end
+    for(i=4;i<24;i=i+1)begin
+        assign gpio_in[i] = 0;
+    end
+endgenerate
+
+
 
 
 

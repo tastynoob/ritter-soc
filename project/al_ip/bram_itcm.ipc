@@ -23,7 +23,7 @@
         <enable_a>disable</enable_a>
     </PortAOption>
     <MemoryInitialization>
-        <init_file>../../isa/mem.dat</init_file>
+        <init_file>../../isa/bootloader.dat</init_file>
     </MemoryInitialization>
     <FillMemoryInitValues>
         <fill_all>NONE</fill_all>

@@ -22,7 +22,9 @@ SOC_TOP u_SOC_TOP(
     .i_rstn  ( i_rstn  ),
 
     .i_io_rx ( 1 ),
-    .o_io_tx  (   )
+    .o_io_tx  (   ),
+    .i_io_rx2 ( 1 ),
+    .o_io_tx2  (   )
 );
 
 

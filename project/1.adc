@@ -1,7 +1,17 @@
 set_pin_assignment	{ i_clk }	{ LOCATION = K14; }
-set_pin_assignment	{ i_io_rx }	{ LOCATION = L12; }
+set_pin_assignment	{ i_io_rx }	{ LOCATION = J11; }
+set_pin_assignment	{ i_io_rx2 }	{ LOCATION = H13; }
 set_pin_assignment	{ i_rstn }	{ LOCATION = K16; }
-set_pin_assignment	{ o_io_tx }	{ LOCATION = J11; }
+set_pin_assignment	{ io_gpio[0] }	{ LOCATION = A4; SLEWRATE = FAST; }
+set_pin_assignment	{ io_gpio[1] }	{ LOCATION = A3; SLEWRATE = FAST; }
+set_pin_assignment	{ io_gpio[2] }	{ LOCATION = C5; SLEWRATE = FAST; }
+set_pin_assignment	{ io_gpio[3] }	{ LOCATION = B6; SLEWRATE = FAST; }
+set_pin_assignment	{ o_io_tx }	{ LOCATION = L12; SLEWRATE = FAST; }
+set_pin_assignment	{ o_io_tx2 }	{ LOCATION = J13; SLEWRATE = FAST; }
+
+
+
+
 
 
 
