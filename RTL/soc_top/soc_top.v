@@ -10,7 +10,8 @@ module SOC_TOP (
     output wire o_io_tx,
     input wire i_io_rx2,
     output wire o_io_tx2,
-    inout wire[3:0] io_gpio
+    inout wire[3:0] io_gpio,
+    output wire o_pwm
 );
 
 
@@ -157,7 +158,8 @@ PERIPH_TOP u_PERIPH_TOP(
     .o_io_tx2      ( o_io_tx2      ),
     .o_gpio_mode    (gpio_mode),
     .i_gpio_in      (gpio_in),
-    .o_gpio_out     (gpio_out)
+    .o_gpio_out     (gpio_out),
+    .o_pwm         (o_pwm)
 );
 
 

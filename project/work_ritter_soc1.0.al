@@ -426,6 +426,14 @@
                     <Attr Name="CompileOrder" Val="52"/>
                 </FileInfo>
             </File>
+            <File Path="../RTL/periph/pwm2rib.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="53"/>
+                </FileInfo>
+            </File>
         </Verilog>
         <ADC_FILE>
             <File Path="1.adc">
@@ -485,7 +493,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2022-05-31 21:59:08.398</Step_Last_Change>
+        <Step_Last_Change>2022-06-01 17:28:45.734</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>
