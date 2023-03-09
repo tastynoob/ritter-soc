@@ -27,7 +27,7 @@ coremark跑分:
 打开project文件夹下的work-ritter_soc1.0.al文件(TD工程文件)      
 即可打开ritter-soc的工程项目        
 ## 烧录程序
-详细请见isa目录下的说明     
+详细请见firmware目录下的说明     
 ### 注意事项
 编译项目之前记得更改如下几个文件        
 1.project/al_ip/bram_itcm.v:更改bram填充文件地址"INIT_FILE"     
