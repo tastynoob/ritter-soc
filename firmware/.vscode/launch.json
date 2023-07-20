@@ -1,16 +1,4 @@
 {
     "version": "0.2.0",
-    "configurations": [
-        {
-            "cwd": "${workspaceRoot}",
-            "type": "cortex-debug",
-            "request": "launch",
-            "name": "jlink",
-            "servertype": "jlink",
-            "interface": "swd",
-            "executable": "build\\Debug\\tinymcu.elf",
-            "runToMain": true,
-            "device": "STM32F103C8"
-        }
-    ]
+    "configurations": []
 }

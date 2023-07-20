@@ -42,9 +42,14 @@ for i in range(0, len(com_list)):
     print("%d: %s" % (i, com_list[i]))
 print("请选择串口:")
 com_id = int(input())
-#连接串口
-ser = serial.Serial(com_list[com_id].device, 115200, timeout=0.5)
 
+while True:
+    try:
+        #连接串口
+        ser = serial.Serial(com_list[com_id].device, 115200, timeout=0.5)
+        break
+    except:
+        print("connect error, please retry")
 
 flash_file = open(flash_file_path, "rb")
 flash_data = flash_file.read()

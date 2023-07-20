@@ -10,7 +10,7 @@ module SOC_TOP (
     output wire o_io_tx,
     input wire i_io_rx2,
     output wire o_io_tx2,
-    inout wire[3:0] io_gpio,
+    inout wire[7:0] io_gpio,
     output wire o_pwm
 );
 
@@ -18,7 +18,7 @@ module SOC_TOP (
 
 wire extlock;//lock信号为高代表输出时钟稳定
 wire sysclk;
-
+wire adc_clk;
 
 `ifndef SIMULATION
 
@@ -34,7 +34,8 @@ pll u_pll(
     .reset    ( ~i_rstn    ),
     .extlock  ( extlock  ),
     .clk0_out (  ),// 72mhz
-    .clk1_out ( sysclk )//80mhz
+    .clk1_out ( sysclk ),//80mhz
+    .clk2_out ( adc_clk ) // 16mhz, used for adc clk
 );
 
 `else
@@ -139,6 +140,7 @@ wire[23:0] gpio_in;
 
 PERIPH_TOP u_PERIPH_TOP(
     .i_clk        ( sysclk        ),
+    .i_adc_clk    (adc_clk),
     .i_rstn       ( reset       ),
 
     .i_ribm_addr  ( periph_addr  ),
@@ -166,12 +168,12 @@ PERIPH_TOP u_PERIPH_TOP(
 
 generate
     genvar i;
-    for(i=0;i<4;i=i+1)begin
+    for(i=0;i<8;i=i+1)begin
         //1为输出模式
         assign io_gpio[i] = gpio_mode[i] ? gpio_out[i] : 1'bz;
         assign gpio_in[i] = io_gpio[i];
     end
-    for(i=4;i<24;i=i+1)begin
+    for(i=8;i<24;i=i+1)begin
         assign gpio_in[i] = 0;
     end
 endgenerate

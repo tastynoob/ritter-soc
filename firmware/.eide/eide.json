@@ -1,1 +1,57 @@
-{"name":"tinymcu","type":"RISC-V","mode":"Debug","toolchain":"RISCV_GCC","dependenceList":[{"groupName":"custom","depList":[{"name":"default","incList":[],"libList":[],"sourceDirList":[],"defineList":[]}]}],"compileConfig":{"linkerScriptPath":".\\lib\\bsp\\link.lds","options":"null"},"uploader":"Custom","srcDirs":["./lib","./src"],"virtualFolder":{"name":"<virtual_root>","files":[],"folders":[]},"excludeList":[],"outDir":"build","deviceName":null,"packDir":null,"uploadConfig":{"bin":"","commandLine":"python flasher.py build\\Debug\\tinymcu.bin"},"miscInfo":{"uid":"3d0f1fbc2aaa6d2a4539808ce2be4714"},"targets":{},"version":"3.1","uploadConfigMap":{"JLink":{"bin":".\\build\\Debug\\tinymcu.hex","baseAddr":"0x08000000","cpuInfo":{"vendor":"ST","cpuName":"STM32F103C8"},"proType":1,"speed":8000,"otherCmds":""}}}
+{
+  "name": "tinymcu",
+  "type": "RISC-V",
+  "dependenceList": [],
+  "srcDirs": [
+    "lib",
+    "src"
+  ],
+  "virtualFolder": {
+    "name": "<virtual_root>",
+    "files": [],
+    "folders": []
+  },
+  "outDir": "build",
+  "deviceName": null,
+  "packDir": null,
+  "miscInfo": {
+    "uid": "3d0f1fbc2aaa6d2a4539808ce2be4714"
+  },
+  "targets": {
+    "Debug": {
+      "excludeList": [],
+      "toolchain": "RISCV_GCC",
+      "compileConfig": {
+        "linkerScriptPath": ".\\lib\\bsp\\link.lds",
+        "options": "null"
+      },
+      "uploader": "Custom",
+      "uploadConfig": {
+        "bin": "",
+        "commandLine": "python flasher.py build\\Debug\\tinymcu.bin",
+        "eraseChipCommand": ""
+      },
+      "uploadConfigMap": {
+        "JLink": {
+          "bin": ".\\build\\Debug\\tinymcu.hex",
+          "baseAddr": "0x08000000",
+          "cpuInfo": {
+            "vendor": "ST",
+            "cpuName": "STM32F103C8"
+          },
+          "proType": 1,
+          "speed": 8000,
+          "otherCmds": ""
+        }
+      },
+      "custom_dep": {
+        "name": "default",
+        "incList": [],
+        "libList": [],
+        "sourceDirList": [],
+        "defineList": []
+      }
+    }
+  },
+  "version": "3.3"
+}

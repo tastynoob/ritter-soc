@@ -1,3 +1,7 @@
+#ifndef _GPIO_H_
+#define _GPIO_H_
+
+
 #include "config.h"
 
 
@@ -10,3 +14,6 @@ typedef struct{
 
 
 #define gpio1 ((volatile GPIO*)0xf0000000)
+
+
+#endif

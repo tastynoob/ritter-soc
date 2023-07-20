@@ -48,7 +48,7 @@ module BRAM_ITCM ( doa, dia, addra, clka, wea );
 				.IMPLEMENT("9K(FAST)"),
 				.DEBUGGABLE("NO"),
 				.PACKABLE("NO"),
-				.INIT_FILE("../../isa/bootloader.dat"),
+				.INIT_FILE("../../firmware/bootloader.dat"),
 				.FILL_ALL("NONE"))
 			inst(
 				.dia(dia),

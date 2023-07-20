@@ -1,5 +1,6 @@
 
-
+#ifndef _TIMER_H_
+#define _TIMER_H_
 
 #include "config.h"
 
@@ -27,3 +28,8 @@ typedef struct {
 void timer_clear();
 u64 timer_getms();
 u64 timer_getus();
+void delayms(u32 ms);
+void delayus(u32 us);
+
+
+#endif

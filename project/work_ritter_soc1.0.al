@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Project Version="1" Path="H:/AllProject/Tang/work-ritter_soc1.0/project">
+<Project Version="1" Path="F:/AllProjects/ritter/ritter-soc/project">
     <Project_Created_Time></Project_Created_Time>
-    <TD_Version>5.0.38657</TD_Version>
-    <UCode>00111100</UCode>
+    <TD_Version>5.0.27252</TD_Version>
+    <UCode>01111100</UCode>
     <Name>work_ritter_soc1.0</Name>
     <HardWare>
         <Family>EG4</Family>
@@ -434,6 +434,22 @@
                     <Attr Name="CompileOrder" Val="53"/>
                 </FileInfo>
             </File>
+            <File Path="al_ip/adc.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="54"/>
+                </FileInfo>
+            </File>
+            <File Path="../RTL/periph/adc2rib.v">
+                <FileInfo>
+                    <Attr Name="UsedInSyn" Val="true"/>
+                    <Attr Name="UsedInP&R" Val="true"/>
+                    <Attr Name="BelongTo" Val="design_1"/>
+                    <Attr Name="CompileOrder" Val="55"/>
+                </FileInfo>
+            </File>
         </Verilog>
         <ADC_FILE>
             <File Path="1.adc">
@@ -493,7 +509,7 @@
     <Configurations>
     </Configurations>
     <Project_Settings>
-        <Step_Last_Change>2022-06-01 17:28:45.734</Step_Last_Change>
+        <Step_Last_Change>2023-07-04 17:28:11.552</Step_Last_Change>
         <Current_Step>60</Current_Step>
         <Step_Status>true</Step_Status>
     </Project_Settings>

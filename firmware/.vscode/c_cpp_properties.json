@@ -3,15 +3,15 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**",
-                "${workspaceFolder}/src/main/inc"
+                "${workspaceFolder}/src/main/inc",
+                "${workspaceFolder}/src/main/lib"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            "windowsSdkVersion": "10.0.19041.0"
+            "compilerPath": "E:\\compilers\\mingw64\\bin\\gcc.exe"
         }
     ],
     "version": 4

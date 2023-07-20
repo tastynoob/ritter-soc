@@ -1,5 +1,12 @@
 #include "usart.h"
 
+char stringBuf[64] = {0};
+char recvBuf[64] = {0};
+
+u8 avaliable(USART_DEF* usart) {
+    return usart->ctrl & 0x2;
+}
+
 void send_char(USART_DEF* usart, char c) {
     usart->write = c;
     while (1) {
